@@ -41,7 +41,6 @@ const initializePassport = () => {
 
                 if (email === config.adminUser && password === config.adminPass ) {
                     const adminHash = createHash(password)
-                    console.log("Entre al menos")
                     const adminUser = await userModel.create({
                         first_name: "admin",
                         last_name: "admin",

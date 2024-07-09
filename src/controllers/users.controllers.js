@@ -102,12 +102,12 @@ export const deleteUsers = async (req, res) => {
 
         const users = await userModel.find({ last_connection: { $lt: currentDate - twoDays } });
 
-        if (users && users.length > 0) {
+        if (users && users.length > 0) { 
             const userEmails = users.map(user => user.email);
             
             await userModel.deleteMany({ _id: { $in: users.map(user => user._id) } });
             userEmails.forEach(email => {
-                sendDeleteMail(email);
+                    sendDeleteMail(email)
             });
 
             return res.status(200).send({ message: 'Usuarios eliminados correctamente' });
@@ -134,3 +134,27 @@ export const deleteUserByEmail = async (req, res) => {
         return res.status(500).send({ error: `Error en eliminar usuario ${error}` });
     }
 }
+
+export const updateRolUserByEmail = async (req, res) => {
+    const { email } = req.params
+
+    try {
+        const user = await userModel.findOne({email: email})
+        if(!user) {
+            return res.status(404).send({ error: 'Usuario no encontrado' });
+        } else {
+            if (user.rol !== "admin") {
+                user.rol = "premium"
+                await user.save()
+                return res.status(200).send({ message: 'Rol Modificado correctamente' });
+            } else{
+                alert("No se puede modificar el rol de un Admin")
+            }
+        }
+    } catch (error) {
+        return res.status(500).send({ error: `Error al modificar el rol de un usuario ${error}` });
+        
+    }
+}
+
+

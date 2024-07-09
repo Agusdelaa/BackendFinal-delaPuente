@@ -189,7 +189,7 @@ export const postCartPurchase = async (req, res) => {
             }
         }
 
-        if(user.rol == 'userPremium') {
+        if(user.rol == 'premium') {
             totalPrice *= 0.90
         }
 

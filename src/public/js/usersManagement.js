@@ -19,3 +19,47 @@ async function deleteUser(email) {
     }
 }
 
+async function upgradeUser(email) {
+    try {
+        const response = await fetch (`/api/users/upgradeUser/${email}`, {
+            method: 'PUT', 
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        })
+        if (response.ok) {
+            swal.fire({
+                title: 'Rol del Usuario Modificado!',
+                icon: 'success'
+            })
+        }
+    } catch (error) {
+        console.error('Error al modificar el rol: ', error);
+    }
+}
+
+
+const cleanUserButton = document.getElementById("cleanUsers")
+
+console.log(cleanUserButton)
+
+cleanUserButton.addEventListener('click', async function() {
+    try {
+        const response = await fetch("/api/users/deleteUsers", {
+            method: "DELETE" ,
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        if (response.ok) {
+            swal.fire({
+                title: 'Usuarios eliminados',
+                icon: 'success'
+            })
+        }
+
+    } catch (error) {
+        console.error('Error al eliminar usuarios: ', error);
+        
+    }
+})

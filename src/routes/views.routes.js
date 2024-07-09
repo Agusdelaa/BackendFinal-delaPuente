@@ -7,8 +7,8 @@ import { checkCookie, getCart, getHome, getRealtimeProducts, getRealtimeChat, ge
 const viewsRouter = Router();
 
 viewsRouter.get('/home', getHome);
-viewsRouter.get('/realtimeproducts', passportError('jwt'), authorization('admin'), getRealtimeProducts);
-viewsRouter.get('/realtimechat', passportError('jwt'), authorization('user'), getRealtimeChat);
+viewsRouter.get('/realtimeproducts', passportError('jwt'), authorization('premium'), getRealtimeProducts);
+viewsRouter.get('/realtimechat', passportError('jwt'), getRealtimeChat);
 viewsRouter.get('/userregister', checkCookie, getUserRegister);
 viewsRouter.get('/userlogin', checkCookie, getUserLogin);
 viewsRouter.get('/userprofile', passport.authenticate('jwt', { session: false, failureRedirect: '/userlogin' }), getuserProfile);

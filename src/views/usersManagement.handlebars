@@ -1,14 +1,21 @@
 <div class="container mt-5">
     <h1>Gestión de usuarios</h1>
 
+     <a href="/userProfile" class="btn btn-success">Volver</a>
+     <br>
+     <br>
     {{#each users}}
         <div class="card mb-3" data-email="{{email}}">
             <div class="card-body">
                 <p class="card-text">Nombre: {{first_name}}</p>
                 <p class="card-text">Apellido: {{last_name}}</p>
+                <p class="card-text">Rol: {{rol}}</p>
                 <p class="card-text">Email: {{email}}</p>
-                <button class="btn btn-danger" onclick="deleteUser('{{email}}')">Eliminar usuario</button>
+                <p class="card-text">Documentos: {{#each documents}} {{name}} {{/each}}</p>
+                <button class="btn btn-success" onclick="upgradeUser('{{email}}')">Convertir a Premium</button>
+                <button class="btn btn-warning" onclick="deleteUser('{{email}}')">Eliminar usuario</button>
             </div>
         </div>
     {{/each}}
+    <button id="cleanUsers" class="btn btn-danger">Limpiar  Usuarios</button>
 </div>
