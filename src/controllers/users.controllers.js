@@ -29,7 +29,7 @@ export const passwordRecovery = async (req, res) => {
 
         recoveryLinks[token] = { email: config.reciveMail, timestamp: Date.now() }
 
-        const recoveryLink = `http://localhost:8080/reset-password/${token}`;
+        const recoveryLink = `${config.pageUrl}${config.port}/reset-password/${token}`;
 
         sendRecoveryMail(email, recoveryLink);
 

@@ -15,8 +15,10 @@ resetPasswordForm.addEventListener('submit', async (e) => {
         if (response.ok) {
             swal.fire({
                 title: 'Constraseña Restablecida',
-                text: '',
+                text: 'Su contraseña fue modificada, será redirigido a su perfil!',
                 icon: 'success'
+            }).then(() => {
+                window.location.href = '/userprofile'
             })
         }
     } catch (error) {

@@ -40,9 +40,11 @@ export const getHome = async (req, res) => {
 export const getRealtimeProducts = async (req, res) => {
     try {
         const products = await productModel.find().lean();
+        console.log(req.user)
         res.render('realTimeProducts', {
             title: 'Productos en tiempo real',
             products: products,
+            user: req.user,
             js: 'js/realtimeProducts.js'
         });
     } catch (error) {

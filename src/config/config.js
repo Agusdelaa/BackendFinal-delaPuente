@@ -1,6 +1,7 @@
 
 const config = {
     port: process.env.PORT ,
+    pageUrl: process.env.PAGEURL,
     dbUrl : process.env.DBURL,
     cookieSecret: process.env.COOKIESECRET ,
     jwtSecret: process.env.JWTSECRET,
