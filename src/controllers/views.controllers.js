@@ -91,7 +91,7 @@ export const getuserProfile = async (req, res) => {
             title: 'Perfil usuario',
             js: 'js/userProfile.js',
             user: req.user ,
-            isAdmin: req.user.user.rol == "admin" ? true : false
+            isAdmin: req.user.user.rol == "admin" ? true : false ,
         });
     } catch (error) {
         return res.status(500).send(`Error interno del servidor: ${error}`);

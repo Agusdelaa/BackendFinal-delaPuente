@@ -23,7 +23,7 @@ const sendMail = async (mailOptions) => {
 export const sendRecoveryMail = (email, recoveryLink) => {
     const mailOptions = {
         from: config.nodeMailerUser,
-        to: config.reciveMail,
+        to: email,
         subject: 'Link para reestablecer su contraseña',
         text: `Haga click en el siguiente enlace para reestablecer su contraseña: ${recoveryLink}`
     }
@@ -34,7 +34,7 @@ export const sendRecoveryMail = (email, recoveryLink) => {
 export const sendDeleteMail = (email) => {
     const mailOptions = {
         from: config.nodeMailerUser,
-        to: config.reciveMail,
+        to: email,
         subject: 'Novedades respecto a su cuenta',
         text: `Sr. Usuario, su cuenta ha sido eliminada por inactividad`
     }

@@ -20,10 +20,13 @@ logoutButton.addEventListener('click', async function() {
 
 const recoveryButton = document.getElementById("recovery")
 
+const emailToSend = document.getElementById("emailToSend")
+
 
 recoveryButton.addEventListener('click' , async function() {
     try {
-        const response = await fetch("/api/users/password-recovery" , {
+        const email = emailToSend.value
+        const response = await fetch(`/api/users/password-recovery/${email}` , {
             method: "post",
             headers: {
                 'Content-Type': 'application/json'

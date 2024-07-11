@@ -22,12 +22,12 @@ export const getUsers = async (req, res) => {
 }
 
 export const passwordRecovery = async (req, res) => {
-    const { email } = req;
+    const { email } = req.params;
 
     try {
         const token = crypto.randomBytes(20).toString('hex');
 
-        recoveryLinks[token] = { email: config.reciveMail, timestamp: Date.now() }
+        recoveryLinks[token] = {email, timestamp: Date.now() }
 
         const recoveryLink = `${config.pageUrl}${config.port}/reset-password/${token}`;
 

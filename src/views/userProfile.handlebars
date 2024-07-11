@@ -14,10 +14,11 @@
 
     {{#if isAdmin}}
         <a href="/usersmanagement" class="btn btn-warning">Manejo de usuarios</a>
-    {{else}}
-        <button id="recovery" class=" btn btn-primary">Recuperar Contraseña</button>
     {{/if}}
-    
+    <button id="recovery" class=" btn btn-primary">Recuperar Contraseña</button>
+
+    <input type="hidden" id="emailToSend" name="email" value="{{user.user.email}}">
+
     <a href="/uploadDoc" class=" btn btn-primary">Subir Documentos</a>
 
    

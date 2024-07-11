@@ -6,7 +6,7 @@ import { uploader } from '../utils/multer.js';
 const userRouter = Router();
 
 userRouter.get('/', passportError('jwt'), authorization('admin'), getUsers);
-userRouter.post('/password-recovery', passwordRecovery);
+userRouter.post('/password-recovery/:email', passwordRecovery);
 userRouter.post('/reset-password/:token', resetPassword);
 userRouter.post('/:uid/documents', passportError('jwt'), uploader.array('documents'), postDocuments);
 userRouter.put ("/upgradeUser/:email", passportError('jwt'), authorization('admin'), updateRolUserByEmail)

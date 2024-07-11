@@ -33,6 +33,9 @@ const productsSchema = new Schema({
         required: true,
         unique: true
     },
+    owner: {
+        type: String
+    },
     thumbnails: []
 });
 
