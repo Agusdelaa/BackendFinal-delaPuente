@@ -34,7 +34,8 @@ const productsSchema = new Schema({
         unique: true
     },
     owner: {
-        type: String
+        type: String,
+        default: "admin"
     },
     thumbnails: []
 });

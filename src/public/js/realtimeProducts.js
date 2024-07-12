@@ -1,10 +1,12 @@
 const socket = io();
 const form = document.getElementById('idForm');
+const inputId = document.getElementById('inputId')
 
 form.addEventListener('submit', (e) => {
     e.preventDefault();
     const datForm = new FormData(e.target);
     const prod = Object.fromEntries(datForm);
+    prod.owner = inputId.value
     socket.emit('newProduct', prod);
     e.target.reset();
 });

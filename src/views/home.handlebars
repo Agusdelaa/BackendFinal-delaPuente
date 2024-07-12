@@ -7,23 +7,28 @@
         {{/if}}
     {{/if}}
 
-    <a href="/cart" class="btn btn-primary mt-3">Ir al carrito</a>
+    <a href="/cart" class="btn btn-dark mt-3">Ir al carrito</a>
 
-    <a href="/userprofile" class="btn btn-primary">Ir al perfil</a>
-    <a href="/realtimechat" class="btn btn-primary">Chat</a>
+    <a href="/userprofile" class="btn btn-info mt-3">Ir al perfil</a>
+    <a href="/realtimechat" class="btn btn-dark mt-3">Chat</a>
      
+    {{#if isPremium}}
+        <a href="/realtimeproducts" class="btn btn-info mt-3">Crear Producto</a>
 
+    {{/if}}
     {{#each products}}
         <div class="card mt-3">
             <div class="card-body">
-                <p class="card-text">Título: {{title}} Precio: {{price}}</p>
+                <p class="card-text">Título: {{title}}</p>
+                <p class="card-text">Precio: {{price}}</p>
+                <p class="card-text">Dueño: {{owner}}</p>
 
                 <div class="form-group">
                     <label for="quantity{{_id}}">Cantidad:</label>
                     <input type="number" class="form-control" id="quantity{{_id}}" name="quantity{{_id}}" value="1" min="1">
                 </div>
 
-                <button class="btn btn-success" onclick="addToCart('{{_id}}', '{{../user.cart}}', document.getElementById('quantity{{_id}}').value)">Agregar al carrito</button>
+                <button class="btn btn-success" onclick="addToCart('{{_id}}', '{{../user.cart}}', document.getElementById('quantity{{_id}}').value, '{{owner}}', '{{../user._id}}')">Agregar al carrito</button>
             </div>
         </div>
     {{/each}}

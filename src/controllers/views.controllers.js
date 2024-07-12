@@ -21,9 +21,12 @@ export const getHome = async (req, res) => {
         const homeData = {
             title: 'Home',
             products: products,
-            js: 'js/home.js'
+            js: 'js/home.js',
+            user: req.user ,
+            isPremium: req.user.user.rol === "premium" ? true : false
         }
 
+        
         if (req.signedCookies.jwtCookie) {
             const userToken = req.signedCookies.jwtCookie;
             const decoded = jwt.verify(userToken, config.jwtSecret);
@@ -40,7 +43,6 @@ export const getHome = async (req, res) => {
 export const getRealtimeProducts = async (req, res) => {
     try {
         const products = await productModel.find().lean();
-        console.log(req.user)
         res.render('realTimeProducts', {
             title: 'Productos en tiempo real',
             products: products,
@@ -87,6 +89,7 @@ export const getUserLogin = async (req, res) => {
 
 export const getuserProfile = async (req, res) => {
     try {
+        console.log(req)
         res.render('userProfile', {
             title: 'Perfil usuario',
             js: 'js/userProfile.js',

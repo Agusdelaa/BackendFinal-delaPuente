@@ -31,12 +31,12 @@ Este proyecto consta de una aplicación web desarrollada con Node.js, Express.js
 3. Ejecuta `npm install` para instalar las dependencias del proyecto.
 4. Crea un archivo `.env` en la raíz del proyecto y configura las variables de entorno necesarias, estan especificadas en el `.env.example`
 5. Ejecuta `npm run dev` para iniciar el servidor.
-6. Abre un navegador web y accede a `http://localhost:8080/home`.
+6. Abre un navegador web y accede a `http://localhost:8080/userRegister`.
 
 ## Uso
 
-1. Explora los productos disponibles en la página de inicio.
-2. Haz clic en el botón "Agregar al carrito" para agregar un producto a tu carrito. En este punto, si ya tienes una cuenta deberás iniciar sesión; caso contrario deberás registrar una nueva cuenta.
+1. Incia o Crea un usuario
+2. Navega en las paginas, agrega productos en la vista "home", podes visitar tu perfil, o ir a un chat en tiempo real.
 3. Ve a la página de carrito para ver los productos agregados, eliminar productos o finalizar la compra.
 
 ## Contacto

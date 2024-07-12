@@ -6,7 +6,7 @@ import { checkCookie, getCart, getHome, getRealtimeProducts, getRealtimeChat, ge
 
 const viewsRouter = Router();
 
-viewsRouter.get('/home', getHome);
+viewsRouter.get('/home',passportError('jwt'), getHome);
 viewsRouter.get('/realtimeproducts', passportError('jwt'), authorization('premium'), getRealtimeProducts);
 viewsRouter.get('/realtimechat', passportError('jwt'), getRealtimeChat);
 viewsRouter.get('/userregister', checkCookie, getUserRegister);
