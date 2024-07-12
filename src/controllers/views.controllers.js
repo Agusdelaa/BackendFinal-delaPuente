@@ -23,7 +23,8 @@ export const getHome = async (req, res) => {
             products: products,
             js: 'js/home.js',
             user: req.user ,
-            isPremium: req.user.user.rol === "premium" ? true : false
+            isPremium: req.user.user.rol === "premium" ? true : false ,
+            isAdmin: req.user.user.rol === "admin" ? true : false
         }
 
         
@@ -89,7 +90,6 @@ export const getUserLogin = async (req, res) => {
 
 export const getuserProfile = async (req, res) => {
     try {
-        console.log(req)
         res.render('userProfile', {
             title: 'Perfil usuario',
             js: 'js/userProfile.js',

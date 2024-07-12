@@ -8,7 +8,6 @@ async function addToCart(productId, cartId, quantity, ownerId, userId) {
         }
 
         if (ownerId === userId) {
-            console.log("Entre")
             swal.fire({
                 title: 'No Fue Posible Agregar El producto',
                 text: 'No puedes agregar Productos de tu propiedad',
@@ -37,6 +36,31 @@ async function addToCart(productId, cartId, quantity, ownerId, userId) {
 
     } catch (error) {
         console.error('Error al agregar producto al carrito:', error);
+    }
+}
+
+async function deleteProduct(productId) {
+    try {
+        const response = await fetch(`/api/products/${productId}` , {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        })
+
+        if (!response.ok) {
+            const errorData = await response.json();
+            console.error('No se pudo eliminar el producto', errorData);
+        } else {
+            swal.fire({
+                title: 'Producto Eliminado',
+                icon: 'success'
+            }).then(()=> {
+                location.reload();
+            })
+        }
+    } catch (error) {
+        
     }
 }
 

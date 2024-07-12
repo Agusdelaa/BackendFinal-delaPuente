@@ -29,6 +29,11 @@
                 </div>
 
                 <button class="btn btn-success" onclick="addToCart('{{_id}}', '{{../user.cart}}', document.getElementById('quantity{{_id}}').value, '{{owner}}', '{{../user._id}}')">Agregar al carrito</button>
+
+                {{#if ../isAdmin}}
+                    <button class="btn btn-danger" onclick="deleteProduct('{{_id}}')">Eliminar Producto</button>
+                {{/if}}
+
             </div>
         </div>
     {{/each}}
